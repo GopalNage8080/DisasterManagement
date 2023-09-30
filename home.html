@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="home.css">
+    <style>
+        .blink {
+            animation: blinker 1s linear infinite;
+        }
+
+        @keyframes blinker {
+            0% {
+                opacity: 1;
+                color: red;
+            }
+            50% {
+                opacity: 0;
+                color: red;
+            }
+            100% {
+                opacity: 1;
+                color: red;
+            }
+        }
+    </style>
+    <title>Chemical Factory Disaster Management</title>
+</head>
+<body>
+    <!-- Define an audio element for the siren sound -->
+    
+    
+    <header>
+        <h1>Chemical Factory Disaster Management</h1>
+    </header>
+    <h1 id="risk">NORMAL</h1>
+    <section class="status-section">
+        <div class="temp">
+            <h2>Temperature</h2>
+            <h2 id="temperature">
+                <div id="message"></div>
+                <script>
+                    function playSiren() {
+                        const sirenAudio = document.getElementById('siren');
+                        sirenAudio.play();
+                    }
+
+                    fetch('http://localhost:8000/string_endpoint')
+                        .then(response => response.text())
+                        .then(data => {
+                            const temperatureValue = parseFloat(data);
+                            document.getElementById('message').innerText = data;
+
+                            // Check if temperature is greater than 25%
+                            if (temperatureValue > 25) {
+                                document.getElementById('risk').innerText = 'RISK';
+                                document.getElementById('risk').classList.add('blink'); // Add the blink class
+                                document.getElementById('prbo').innerText = 'Problem';
+                                document.getElementById('problem-details').innerText = 'Problem at the temperature section';
+
+                                // Play the siren sound
+                                playSiren();
+
+                                // Send a message to the server
+                                fetch('http://localhost:8000/send_message', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                    body: JSON.stringify({ message: 'We are at risk' }),
+                                })
+                                .then(response => {
+                                    if (response.ok) {
+                                        console.log('Message sent successfully');
+                                    } else {
+                                        console.error('Failed to send message to the server');
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error('Error:', error);
+                                });
+                            } else {
+                                // Reset the risk section to normal when the temperature is within the acceptable range
+                                document.getElementById('risk').innerText = 'NORMAL';
+                                document.getElementById('risk').classList.remove('blink'); // Remove the blink class
+                                document.getElementById('prbo').innerText = 'Problem';
+                                document.getElementById('problem-details').innerText = 'Problem at the alarm system'; // Update the problem message
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+                </script>
+            </h2>
+            <h3>temp between 21% to 25%</h3>
+            <p class="status normal">Normal</p>
+        </div>
+        <div class="ele">
+            <h2>Electronics</h2>
+            <p class="status normal">Normal</p>
+            <h2>All Normal</h2>
+            <h2>In All Section</h2>
+        </div>
+        <div class="ala">
+            <h2>Alarm System</h2>
+            <p class="status risk">Risk</p>
+            <h2>Problem At</h2>
+            <h2>Sector S2</h2>
+        </div>
+    </section>
+    <hr>
+    <h1 id="prbo">Problem</h1>
+    <div class="pdetails">
+        <p id="problem-details">No problems reported</p>
+    </div>
+    <div class="tragedy">
+        <a href="previoustragedy.html" class="login-button">Login</a>
+    </div>
+    <footer>
+        <p>&copy; 2023 Chemical Factory Disaster Management</p>
+    </footer>
+</body>
+</html>
