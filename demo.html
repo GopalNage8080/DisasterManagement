@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Message Receiver</title>
+</head>
+<body>
+    <div id="messageContainer"></div>
+    
+    <input type="text" id="messageInput" placeholder="Type your message">
+    <button onclick="sendMessage()">Send</button>
+
+    <script>
+        function sendMessage() {
+            const messageInput = document.getElementById('messageInput');
+            const message = messageInput.value;
+            
+            // Clear the input field
+            messageInput.value = '';
+
+            // Send the message to the server (you would need a server to handle this)
+            // In this example, we're just simulating it
+            displayMessage(`You: ${message}`);
+
+            // You would typically send the message to the server here for further processing
+            // You can use AJAX, WebSocket, or other methods to send data to the server
+        }
+
+        function displayMessage(message) {
+            const messageContainer = document.getElementById('messageContainer');
+            const messageElement = document.createElement('div');
+            messageElement.textContent = message;
+            messageContainer.appendChild(messageElement);
+        }
+    </script>
+</body>
+</html>

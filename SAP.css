@@ -1,0 +1,58 @@
+.layout{
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-start;
+	margin: 20px;
+	border-radius: 1px solid black;
+}
+
+.Explosive {
+	
+	height: 200px;
+    width: 350px;
+    text-align: center;
+    margin: 10px;
+    padding: 20px;
+    border: 2px solid #292626;
+    border-radius: 1px;
+}
+.Flammable{
+	height: 200px;
+    width: 350px;
+    text-align: center;
+    margin: 10px;
+    padding: 20px;
+    border: 2px solid #292626;
+    border-radius: 1px;
+}
+.corrosive{
+	height: 200px;
+    width: 350px;
+    text-align: center;
+    margin: 10px;
+    padding: 20px;
+    border: 2px solid #292626;
+    border-radius: 1px;
+}
+.dangerous{
+	height: 200px;
+    width: 350px;
+    text-align: center;
+    margin: 10px;
+    padding: 20px;
+    border: 2px solid #292626;
+    border-radius: 1px;
+}
+.layout2{
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-start;
+	margin: 20px;
+	border-radius: 1px solid black;
+}
+
+.layout, .layout2 {
+    display: flex;
+    justify-content: space-between; /* You can adjust this according to your layout needs */
+    margin-top: 20px; /* Add some margin for spacing between sections */
+}

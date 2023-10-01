@@ -26,7 +26,7 @@ public class StringServer {
             headers.set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE"); // Allow various HTTP methods
             headers.set("Access-Control-Allow-Headers", "Content-Type"); // Allow Content-Type header
 
-            String response = "50%";
+            String response = "40%";
             exchange.sendResponseHeaders(200, response.length());
             OutputStream os = exchange.getResponseBody();
             os.write(response.getBytes());

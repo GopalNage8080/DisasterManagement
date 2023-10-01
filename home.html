@@ -10,33 +10,52 @@
         }
 
         @keyframes blinker {
-            0% {
-                opacity: 1;
-                color: red; 
-            }
-            50% {
-                opacity: 0;
-                color: red;
-            }
-            100% {
-                opacity: 1;
-                color: red;
-            }
+        0% {
+            opacity: 1;
+            color: red;
+            transform: rotate(0deg); /* Add rotation for horizontal display */
+        }
+        50% {
+            opacity: 0;
+            color: red;
+        }
+        100% {
+            opacity: 1;
+            color: red;
+            transform: rotate(0deg); /* Add rotation for horizontal display */
+        }
         }
     </style>
     <title>Chemical Factory Disaster Management</title>
 </head>
 <body>
-    <!-- Define an audio element for the siren sound -->
-    
-    
     <header>
         <h1>Chemical Factory Disaster Management</h1>
     </header>
-    <h1 id="risk">NORMAL</h1>
+
+    <div class="bstauts">
+        <div id="bh">
+           <h1 id="risk">N<br>O<br>R<br>M<br>A<br>L</h1>
+        </div>
+        <div id="details">
+            <p>Details :</p>
+            <ul>
+                <li> Temperature : In Control</li>
+                <li> Electronics :- Working </li>
+                <li>Emergency Alarm :- Working</li>
+                <li>Moisture : In Control</li>
+                <li>Humidity : In Control</li>
+                <li>Emergency System: Working</li>
+            </ul>
+        </div>
+    </div>
+
+    
     <section class="status-section">
         <div class="temp">
-            <h2>Temperature</h2>
+            <div class="thed">
+            <h2 #id="thed">Temperature</h2>
+            </div>
             <h2 id="temperature">
                 <div id="message"></div>
                 <script>
@@ -96,13 +115,17 @@
             <p class="status normal">Normal</p>
         </div>
         <div class="ele">
-            <h2>Electronics</h2>
+            <div class="thed">
+                <h2 #id="thed">Electronics</h2>
+                </div>
             <p class="status normal">Normal</p>
             <h2>All Normal</h2>
             <h2>In All Section</h2>
         </div>
         <div class="ala">
-            <h2>Alarm System</h2>
+            <div class="thed">
+                <h2 #id="thed">Alarm System</h2>
+                </div>
             <p class="status risk">Risk</p>
             <h2>Problem At</h2>
             <h2>Sector S2</h2>
@@ -113,9 +136,35 @@
     <div class="pdetails">
         <p id="problem-details">No problems reported</p>
     </div>
+    <hr>
+    <div class="extra">
     <div class="tragedy">
-        <a href="previoustragedy.html" class="login-button">Login</a>
+        <h1>Previous disaster:</h1>
+            <div class="more">
+                <h3>Before Ludhiana Gas Leak this week, 5 industrial disasters that shocked India
+                </h3>
+               <img src="pt.jfif" alt="Description of the image" width="300" height="200">
+               <p id="message-at-pt">Hundreds of people admitted to hospital and several dead after gas leak at southern Indian chemical plant</p>
+            </div>
+           
+            <div class="pt">
+                <a href="previoustragedy.html" class="login-button"><button>Read More</button></a>
+            </div>
     </div>
+    <div class="tragedy">
+        <h1>Safety And Preventation:</h1>
+            <div class="more">
+                <h3>Before Ludhiana Gas Leak this week, 5 industrial disasters that shocked India
+                </h3>
+               <img src="SAP.png" alt="Description of the image" width="400" height="200">
+               <p id="mssage-at-pt">Hundreds of people admitted to hospital and several dead after gas leak at southern Indian chemical plant</p>
+            </div>
+           
+            <div class="pt">
+                <a href="SAP.html" class="login-button"><button>Read More</button></a>
+            </div>
+    </div>
+</div>
     <footer>
         <p>&copy; 2023 Chemical Factory Disaster Management</p>
     </footer>
