@@ -1,0 +1,120 @@
+{
+  "users": [
+    {
+      "name": "john",
+      "email": "john@gmail.com",
+      "password": "123",
+      "id": 1
+    },
+    {
+      "name": "john",
+      "email": "john@gmail.com",
+      "password": "123",
+      "id": 2
+    },
+    {
+      "name": "sachinbedke",
+      "email": "sachin@gmail.com",
+      "password": "123",
+      "id": 3
+    },
+    {
+      "name": "john",
+      "email": "john@gmail.com",
+      "password": "123",
+      "id": 4
+    },
+    {
+      "name": "john",
+      "email": "admin@gmail.com",
+      "password": "123",
+      "id": 5
+    },
+    {
+      "name": "Emmanuel Macron",
+      "email": "sachin@gmail.com",
+      "password": "123",
+      "id": 6
+    },
+    {
+      "name": "gopal",
+      "email": "gopal@gmail.com",
+      "password": "123",
+      "id": 7
+    }
+  ],
+  "temp": [
+    {
+      "Temprature": "22",
+      "Electronic ": "Risk",
+      "AirQ": "Bad",
+      "id": 1
+    },
+    {
+      "Temprature": "22",
+      "Electronic ": "Normal",
+      "AirQ": "Bad",
+      "id": 2
+    },
+    {
+      "Temprature": "22",
+      "Electronic ": "Normal",
+      "AirQ": "Bad",
+      "id": 3
+    },
+    {
+      "Temprature": "22",
+      "Electronic ": "Normal",
+      "AirQ": "Bad",
+      "id": 4
+    },
+    {
+      "Temprature": "208",
+      "Electronic ": "Normal",
+      "AirQ": "Normal",
+      "id": 5
+    },
+    {
+      "Temprature": "40",
+      "Electronic ": "Normal",
+      "AirQ": "Normal",
+      "id": 6
+    },
+    {
+      "Temprature": "40",
+      "Electronic ": "Normal",
+      "AirQ": "Normal",
+      "id": 7
+    },
+    {
+      "Temprature": "40",
+      "Electronic ": "Normal",
+      "AirQ": "Normal",
+      "id": 8
+    },
+    {
+      "Temprature": "4",
+      "Electronic ": "Normal",
+      "AirQ": "Normal",
+      "id": 9
+    },
+    {
+      "Temprature": "4",
+      "Electronic ": "Normal",
+      "AirQ": "Bad",
+      "id": 10
+    },
+    {
+      "Temprature": "222",
+      "Electronic ": "Risk",
+      "AirQ": "Bad",
+      "id": 11
+    },
+    {
+      "Temprature": "45",
+      "Electronic ": "Normal",
+      "AirQ": "Bad",
+      "id": 12
+    }
+  ]
+}
