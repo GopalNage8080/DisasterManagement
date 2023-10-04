@@ -12,10 +12,10 @@ const App = () => {
     <BrowserRouter>
       <ToastContainer />
       <Routes>
-        <Route path='/temp' element={<Temprature />} />
+        <Route path='/' element={<Temprature />} />
         <Route path='/dash' element={<Dashboard />} />
         <Route path='/his' element={<History />} />
-        <Route path='/' element={<Register />} />
+        <Route path='/reg' element={<Register />} />
       </Routes>
     </BrowserRouter>
   </>

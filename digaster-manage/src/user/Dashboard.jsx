@@ -2,42 +2,72 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import useDymanicForm from '../hooks/useDymanicForm'
 import { useDispatch, useSelector } from 'react-redux'
-import { loginUser } from '../redux/actions/userActions'
+import { getData, insertData, loginUser } from '../redux/actions/userActions'
+import { invalidate } from '../redux/slices/userSlice'
 
 const Dashboard = () => {
-    const { auth } = useSelector(state => state.user)
-    const navigate = useNavigate()
+    // const { auth } = useSelector(state => state.user)
+    // const navigate = useNavigate()
+    // const dispatch = useDispatch()
+    // const [selectedImage, setSelectedImage] = useState(0)
+    // const images = [
+    //     "https://img.freepik.com/premium-photo/oil-refinery-is-fire-explosion_693425-8775.jpg?w=2000",
+    //     "https://assets.thehansindia.com/h-upload/2022/01/12/1600x960_1192245-fire-accident.jpg",
+    //     "https://img.freepik.com/premium-photo/oil-refinery-is-fire-explosion_693425-8775.jpg?w=2000",
+    //     "https://gumlet.assettype.com/freepressjournal/2023-04/f9b4a075-0c74-4ba8-8e71-b3bc9e338d71/shivshahi_amravati.jfif",
+    //     "https://img.onmanorama.com/content/dam/mm/en/kerala/top-news/images/2023/5/13/kochi-fire-accident-c.jpg",
+    // ]
+    // const handleSubmit = e => {
+    //     dispatch(loginUser(state))
+    // }
+    // const config = [
+    //     { fieldName: "email", type: "email" },
+    //     { fieldName: "password", type: "password" },
+    //     { fieldName: "Login", type: "submit", onClick: handleSubmit },
+    // ]
+    // const [ui, state, pre] = useDymanicForm(config)
+
+    // useEffect(() => {
+    //     let t = setInterval(() => {
+    //         // setSelectedImage(pre => (pre + 1) % images.length)
+    //         setSelectedImage(pre => pre === images.length - 1 ? 0 : pre + 1)
+    //     }, 2000)
+    //     return () => {
+    //         clearInterval(t)
+    //     }
+    // }, [])
     const dispatch = useDispatch()
-    const [selectedImage, setSelectedImage] = useState(0)
-    const images = [
-
-        "https://static.tnn.in/photo/msid-91622064,width-100,height-200,resizemode-75/91622064.jpg",
-
-        "https://img.freepik.com/premium-photo/oil-refinery-is-fire-explosion_693425-8775.jpg?w=2000",
-        "https://www.newsclick.in/sites/default/files/styles/amp_1200x675_16_9/public/2022-01/accien36.jpg?itok=GcdDtuzY",
-        "https://images.deccanherald.com/deccanherald%2Fimport%2Fsites%2Fdh%2Ffiles%2Farticleimages%2F2022%2F05%2F29%2Ffire-dh-14-1113402-1653766961.jpg?auto=format%2Ccompress&fmt=webp&fit=max&format=webp&w=400&dpr=2.6"
-    ]
+    const { Data, dataInserted } = useSelector(state => state.user)
     const handleSubmit = e => {
-        dispatch(loginUser(state))
+        if (state.Temperature || state.AirP || state.AirQ) {
+            dispatch(insertData(state))
+            dispatch(invalidate())
+        }
+        else {
+
+            alert("Fill Total Information")
+        }
     }
+
     const config = [
-        { fieldName: "email", type: "email" },
-        { fieldName: "password", type: "password" },
-        { fieldName: "name", type: "text" },
-        { fieldName: "Login", type: "submit", onClick: handleSubmit },
+        { fieldName: "Temperature", type: "number" },
+        { fieldName: "Moisture", type: "select", options: ["Normal", "Risk"] },
+        { fieldName: "Humidity", type: "select", options: ["Normal", "Risk"], },
+        { fieldName: "Alarm_Working", type: "radio", options: ["Yes", "No"], },
+        { fieldName: "Date", type: "date", },
+        { fieldName: "Check Total Measure", type: "submit", onClick: handleSubmit },
     ]
     const [ui, state, pre] = useDymanicForm(config)
     useEffect(() => {
-        let t = setInterval(() => {
-            // setSelectedImage(pre => (pre + 1) % images.length)
-            setSelectedImage(pre => pre === images.length - 1 ? 0 : pre + 1)
-        }, 5000)
-        return () => {
-            clearInterval(t)
+        if (dataInserted) {
+            dispatch(getData())
         }
-    }, [])
+    }, [dataInserted])
+
+
 
     return <>
+        {/* <>
         <dialog id="my_modal_3" className="modal">
             <form method="dialog" className="modal-box">
                 {ui}
@@ -54,13 +84,16 @@ const Dashboard = () => {
 
 
 
-                <button onClick={e => navigate("/temp")} className="btn btn-success"> Temprature</button>
             </div>
             <div className="navbar-center">
                 <a className="btn btn-ghost normal-case text-xl">Digaster Managment</a>
             </div>
             <div className="navbar-end">
                 <button className="btn btn-ghost">
+                    <button onClick={e => navigate("/temp")} className="btn-btn-slate-100"> Temprature</button>
+                </button>
+                <button className="btn btn-ghost">
+
                     <button onClick={e => navigate("/his")}>History</button>
                 </button>
                 <button className="btn btn-ghost btn-circle">
@@ -72,10 +105,27 @@ const Dashboard = () => {
                 </button>
             </div>
         </div >
-        <button onClick={e => setSelectedImage(pre => pre === 0 ? images.length - 1 : pre - 1)} class="btn btn-error">pre</button>
-        <button onClick={e => setSelectedImage(pre => pre === images.length - 1 ? 0 : pre + 1)} class="btn btn-warning">next</button>
+        <button onClick={e => setSelectedImage(pre => pre === 0 ? images.length - 1 : pre - 1)} className="btn btn-outline ">pre</button>
+        <button onClick={e => setSelectedImage(pre => pre === images.length - 1 ? 0 : pre + 1)} className="btn btn-outline">next</button>
 
         <img className='img-fluid' src={images[selectedImage]} alt="" />
+        <div className="hero min-h-screen bg-base-200">
+            <div className="hero-content text-center">
+                <div className="max-w-md">
+                    <h1 className="text-5xl font-bold">Hello there</h1>
+                    <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                    <button className="btn btn-primary">Get Started</button>
+                </div>
+            </div>
+        </div>
+    </> */}
+        <div className='container'>
+            <div className="card card-compact w-96 bg-base-100 shadow-xl">
+                <div className="card-body">
+                    {ui}
+                </div>
+            </div>
+        </div>
     </>
 
 }

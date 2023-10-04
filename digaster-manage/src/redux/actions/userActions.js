@@ -47,7 +47,11 @@ export const getData = createAsyncThunk(
     async (userData, { rejectWithValue, getState }) => {
         try {
             const { data } = await API.get("/temp", userData)
-            return data
+            if (data.length === 0) {
+                return rejectWithValue("Data is empty")
+            }
+            const last = data.length - 1
+            return data[last]
         } catch (error) {
             return rejectWithValue(error.message || "something went wrong")
         }

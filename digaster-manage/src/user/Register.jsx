@@ -29,24 +29,18 @@ const Register = () => {
         if (userRegistered) {
             toast.success("User Registratiion SuccesFull")
 
-            navigate("/dash")
+            navigate("/")
         }
     }, [userRegistered])
     return <>
-        <div class="flex items-center min-h-screen bg-white dark:bg-gray-900">
-            <div class="container mx-auto">
-                <div className=' text-center'>
+        <div className='w-screen '>
+            <div className='container mt-40 flex items-center justify-evenly ' >
+                <div className='w-1/2'>
+                    {/* <img src= {fir.png} alt="Fir file" /> */}
 
                 </div>
-                <div class="max-w-md mx-auto my-10">
-                    <div >
-                        <h1 className='text-center bg-slate-200 rounded-lg '>sign in</h1>
-                        <img className='img-fluid' src="https://img.pikbest.com/element_our/20220330/bg/623773045e931.png!w700wp" />
-                        {ui}
-                    </div>
-
-
-                </div>
+                <div className=' w-1/4  '>
+                    {ui}</div>
             </div>
         </div>
     </>
